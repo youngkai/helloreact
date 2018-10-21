@@ -8,11 +8,17 @@ class DataList extends Component {
     }
 
     render() {
-        return <li onClick={this.handleClick} key={this.props.key1}> {this.props.item} </li>
+        const { item, index } = this.props;
+        return (
+            <li onClick={this.handleClick} key={index}>
+                {item}
+            </li>
+        )
     }
 
     handleClick() {
-        this.props.delItem(this.props.key1);
+        const { delItem, key1 } = this.props;
+        delItem(key1);
     }
 }
 

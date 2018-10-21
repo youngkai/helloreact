@@ -10,6 +10,9 @@ class Test extends Component{
             'inputValue': '',
             'list': ['学习中文', '学习英文'],
         };
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleDel = this.handleDel.bind(this);
     }
 
     render() {
@@ -18,14 +21,14 @@ class Test extends Component{
                 <div>
                     {/*这是注释*/}
                     <label htmlFor="content">输入内容</label>
-                    <input id="content" className="input" value = {this.state.inputValue} onChange = {this.handleInputChange.bind(this)}/>
-                    <button onClick = {this.handleClick.bind(this)}>提交</button>
+                    <input id="content" className="input" value = {this.state.inputValue} onChange = {this.handleInputChange}/>
+                    <button onClick = {this.handleClick}>提交</button>
                 </div>
                 <ul>
                     {
                         this.state.list.map((item, index) => {
                             return(
-                                    <DataList item={item} key1={index} key={index} delItem={this.handleDel.bind(this)} />
+                                    <DataList item={item} key1={index} key={index} delItem={this.handleDel} />
                             )
                         })
                     }
