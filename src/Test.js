@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import './test.css';
+import DataList from "./DataList";
 
 class Test extends Component{
 
@@ -14,13 +16,17 @@ class Test extends Component{
         return (
             <Fragment>
                 <div>
-                    <input value = {this.state.inputValue} onChange = {this.handleInputChange.bind(this)}/>
+                    {/*这是注释*/}
+                    <label htmlFor="content">输入内容</label>
+                    <input id="content" className="input" value = {this.state.inputValue} onChange = {this.handleInputChange.bind(this)}/>
                     <button onClick = {this.handleClick.bind(this)}>提交</button>
                 </div>
                 <ul>
                     {
                         this.state.list.map((item, index) => {
-                            return <li key={index} onClick={this.handleDel.bind(this, index)}>{item}</li>
+                            return(
+                                    <DataList item={item} key1={index} key={index} delItem={this.handleDel.bind(this)} />
+                            )
                         })
                     }
                 </ul>
@@ -39,8 +45,9 @@ class Test extends Component{
         });
      }
     handleDel(index) {
+        //拷贝副本出来进行修改操作
         const list = [...this.state.list];
-        list.splice(index, 1)
+        list.splice(index, 1);
         this.setState({
             list: list
         })
